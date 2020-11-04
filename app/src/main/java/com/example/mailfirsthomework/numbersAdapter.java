@@ -11,15 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class numbersAdapter extends RecyclerView.Adapter<numbersViewHolder> {
-
     protected final List<Numbers> mData;
-
     public numbersAdapter(List<Numbers> data) {
-
         mData = data;
     }
-
-
     // Инициализируем ViewHolder
     @NonNull
     @Override
@@ -41,7 +36,7 @@ public class numbersAdapter extends RecyclerView.Adapter<numbersViewHolder> {
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Toast.makeText( "Button Clicked", Toast.LENGTH_LONG).show();
+
                 }
             });
         }

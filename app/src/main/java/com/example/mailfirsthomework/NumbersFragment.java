@@ -36,7 +36,7 @@ public class NumbersFragment extends Fragment {
         // инициализируем View для отображения списка
         final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
         recycler.setAdapter(new numbersAdapter(numbersRepository.getInstance().list()));
-        recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
     }
 
 }

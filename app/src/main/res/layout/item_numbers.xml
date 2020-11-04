@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="48dp"
     xmlns:tools="http://schemas.android.com/tools">
     <TextView
         android:id="@+id/name"
         tools:text="Random Name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/app_name"
-        tools:src="@color/color_black"
-        />
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_black"
+        android:padding="8dp" />
 </RelativeLayout>

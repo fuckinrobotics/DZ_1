@@ -3,18 +3,13 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <fragment android:name="com.example.mailfirsthomework.NumbersFragment"
         android:id="@+id/first_fragment"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
     />
-
     <fragment android:name="com.example.mailfirsthomework.ScreenNumberFragment"
         android:id="@+id/second_fragment"
-
         android:layout_width="0dp"
         android:layout_height="match_parent" />
-
 </RelativeLayout>

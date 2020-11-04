@@ -10,38 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 public class numbersViewHolder extends RecyclerView.ViewHolder {
 public View button;
 
-public interface IListener {
-    void onDroidClicked(int position);
-}
 
-
-    protected final IListener mListener;
     protected final TextView mName;
 
 
 
     protected final ImageView mImage;
 
-    public numbersViewHolder(View itemView, IListener listener) {
+    public numbersViewHolder(View itemView) {
         super(itemView);
         button = (Button) itemView.findViewById(R.id.btn);
-
-        mListener = listener;
 
         // Находим View, которые будут отвечать за имя и картинку
         mName = itemView.findViewById(R.id.name);
         mImage = itemView.findViewById(R.id.image);
 
-
-        // Отслеживаем клик по элементу
-        final View.OnClickListener clickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.onDroidClicked(getAdapterPosition());
-            }
-        };
-
-        itemView.setOnClickListener(clickListener);
     }
 
 

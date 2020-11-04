@@ -15,11 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_first_fragment);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.first_fragment, new NumbersFragment())
-                    .commit();
-        }
+        setContentView(R.layout.activity_main);
+
     }
 }

@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class numbersAdapter extends RecyclerView.Adapter<numbersViewHolder> {
-    protected final numbersViewHolder.IListener mListener;
+
     protected final List<Numbers> mData;
 
-    public numbersAdapter(List<Numbers> data, numbersViewHolder.IListener listener) {
-        mListener = listener;
+    public numbersAdapter(List<Numbers> data) {
+
         mData = data;
     }
 
@@ -31,7 +31,7 @@ public class numbersAdapter extends RecyclerView.Adapter<numbersViewHolder> {
         } else {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.btn_item, parent, false);
         }
-        return new numbersViewHolder(itemView, mListener);
+        return new numbersViewHolder(itemView);
     }
 
     // Вставляем данные во ViewHolder

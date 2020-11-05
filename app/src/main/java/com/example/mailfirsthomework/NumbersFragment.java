@@ -21,6 +21,7 @@ import java.util.Random;
 
 
 public class NumbersFragment extends Fragment {
+    public numbersAdapter mAdapter = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,7 +36,8 @@ public class NumbersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
-        recycler.setAdapter(new numbersAdapter(numbersRepository.getInstance().list()));
+        mAdapter  = new numbersAdapter(numbersRepository.getInstance().list());
+        recycler.setAdapter(mAdapter);
         recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
     }
 

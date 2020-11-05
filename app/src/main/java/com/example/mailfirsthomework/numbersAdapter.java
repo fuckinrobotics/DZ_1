@@ -31,21 +31,28 @@ public class numbersAdapter extends RecyclerView.Adapter<numbersViewHolder> {
 
     // Вставляем данные во ViewHolder
     @Override
-    public void onBindViewHolder(@NonNull numbersViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull numbersViewHolder holder, final int position) {
         if(position == mData.size()) {
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Numbers item = null;
+                    item.name = Integer.toString(position + 1);
+                    item.state = (position + 1) % 2;
+                    addItem(item);
                 }
             });
+
         }
         else {
             final Numbers item = mData.get(position);
             holder.bind(item);
         }
     }
-
+    private void addItem(Numbers item) {
+        mData.add(item);
+        mAdapter.notifyDataSetChanged();
+    }
     // Переприсвыиваем элемент, если он последний
     @Override
     public int getItemViewType(int position) {

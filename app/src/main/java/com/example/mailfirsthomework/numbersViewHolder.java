@@ -26,7 +26,7 @@ public class numbersViewHolder extends RecyclerView.ViewHolder {
         // Ставим имя дроида
 
         mName.setText(item.name);
-        System.out.println(item.name);
+       // System.out.println(item.name);
         // Ставим цвет, в зависимости от состояния дроида
         switch (item.state) {
             case Numbers.STATE_RED:

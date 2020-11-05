@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class numbersRepository {
     // Константы
-    public static final    int DATA_SIZE = 100;
+    public static final int DATA_SIZE = 100;
     // Объекты для реализации хардкорного синглтона в java
     private static volatile numbersRepository mInstance;
 
@@ -40,6 +40,7 @@ public class numbersRepository {
     public Numbers item(int index) {
         return mData.get(index);
     }
+
 
 
     // Функция инициализации списка дроидов

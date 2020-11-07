@@ -14,14 +14,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+// Класс фрагмента
 public class NumbersFragment extends Fragment {
-    public numbersAdapter mAdapter = null;
+    public NumbersAdapter mAdapter = null;
+
+    // Инициализация view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,12 +32,14 @@ public class NumbersFragment extends Fragment {
                 // Мы сами в шоке от того, почему была сделана такая логика работы метод:(
         );
     }
+
+    // когда View создано
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
-        mAdapter  = new numbersAdapter(numbersRepository.getInstance().list());
+        mAdapter  = new NumbersAdapter(NumbersRepository.getInstance().list());
         recycler.setAdapter(mAdapter);
         recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
     }

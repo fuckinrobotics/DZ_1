@@ -88,6 +88,15 @@ public class NumbersFragment extends Fragment {
             if (mListener != null) {
                 mListener.onNumbersClicked(item);
             }
+            System.out.println("hfgdf");
+
+            Bundle bundle=new Bundle();
+            bundle.putString("state",item.name);
+            DetailsFragment newFragment = new DetailsFragment();
+            newFragment.setArguments(bundle);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.first_fragment, newFragment);
+            transaction.commit();
         }
     }
 }

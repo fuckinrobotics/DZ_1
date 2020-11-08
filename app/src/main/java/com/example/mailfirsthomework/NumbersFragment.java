@@ -57,15 +57,13 @@ public class NumbersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         int orientation = this.getResources().getConfiguration().orientation;
+        final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
+        recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             // code for portrait mode
-            final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
-            recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
             recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
         } else {
             // code for landscape mode
-            final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
-            recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
             recycler.setLayoutManager(new GridLayoutManager(requireContext(), 4));
         }
 

@@ -1,6 +1,7 @@
 package com.example.mailfirsthomework;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,10 +56,19 @@ public class NumbersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
-        final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // code for portrait mode
+            final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
+            recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
+            recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        } else {
+            // code for landscape mode
+            final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
+            recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
+            recycler.setLayoutManager(new GridLayoutManager(requireContext(), 4));
+        }
 
-        recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
-        recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
     }
 
     // Отсоединение от активити
@@ -77,9 +88,6 @@ public class NumbersFragment extends Fragment {
             if (mListener != null) {
                 mListener.onNumbersClicked(item);
             }
-            // Вариант кода, для android:launchMode="singleInstance"
-//            final Intent intent = MainActivity.droidDetailsIntent(requireContext(), droid);
-//            startActivity(intent);
         }
     }
 }

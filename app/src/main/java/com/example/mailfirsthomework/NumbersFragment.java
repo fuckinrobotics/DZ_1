@@ -20,7 +20,23 @@ import java.util.Random;
 
 // Класс фрагмента
 public class NumbersFragment extends Fragment {
-    public NumbersAdapter mAdapter = null;
+
+    // Интерфейс клика по Numbers
+    public interface IListener {
+        public void onNumbersClicked(Numbers item);
+    }
+
+    // Переменная лисенера
+    protected IListener mListener;
+
+    // Ассоциация с активити
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (requireActivity() instanceof IListener) {
+            mListener = (IListener) requireActivity();
+        }
+    }
 
     // Инициализация view
     @Override
@@ -39,11 +55,33 @@ public class NumbersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // инициализируем View для отображения списка
         final RecyclerView recycler = view.findViewById(R.id.first_recyclerview);
-        mAdapter  = new NumbersAdapter(NumbersRepository.getInstance().list());
-        recycler.setAdapter(mAdapter);
+
+        recycler.setAdapter(new NumbersAdapter(NumbersRepository.getInstance().list(), new NumbersClickHandler()));
         recycler.setLayoutManager(new GridLayoutManager(requireContext(), 3));
     }
 
+    // Отсоединение от активити
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    // Одна из возможных реализаций отслеживания клика по элементу
+    // обработчик клика по элементу
+    class NumbersClickHandler implements NumbersViewHolder.IListener {
+        @Override
+        public void onNumbersClicked(int position) {
+            final Numbers item = NumbersRepository.getInstance().item(position);
+            // Вариант кода, для общения с activity без Intent
+            if (mListener != null) {
+                mListener.onNumbersClicked(item);
+            }
+            // Вариант кода, для android:launchMode="singleInstance"
+//            final Intent intent = MainActivity.droidDetailsIntent(requireContext(), droid);
+//            startActivity(intent);
+        }
+    }
 }
 
 

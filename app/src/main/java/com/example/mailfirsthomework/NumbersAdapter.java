@@ -9,10 +9,15 @@ import java.util.List;
 
 // Класс адаптера для ресайкла
 public class NumbersAdapter extends RecyclerView.Adapter<NumbersViewHolder> {
+    protected final NumbersViewHolder.IListener mListener;
     protected final List<Numbers> mData;
-    public NumbersAdapter(List<Numbers> data) {
+    public NumbersAdapter(List<Numbers> data, NumbersViewHolder.IListener listener) {
+        mListener = listener;
         mData = data;
     }
+
+
+
 
     // Метод инициализации ViewHolder
     @NonNull
@@ -25,7 +30,7 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersViewHolder> {
         } else {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.btn_item, parent, false);
         }
-        return new NumbersViewHolder(itemView);
+        return new NumbersViewHolder(itemView, mListener);
     }
 
     // Метод вставки данных во во ViewHolder

@@ -27,17 +27,14 @@ public class DetailsFragment  extends Fragment {
         @Override
         public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            final TextView u = (TextView) view.findViewById(R.id.detail_txt);
+            final TextView u = view.findViewById(R.id.detail_txt);
             Button b = view.findViewById(R.id.btn_back);
             final Bundle bundle = this.getArguments();
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (bundle != null) {
-                        NumbersFragment newFragment = new NumbersFragment();
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.first_fragment, newFragment);
-                        transaction.commit();
+                        getFragmentManager().popBackStack();
                     }
                 }
             });
@@ -51,10 +48,7 @@ public class DetailsFragment  extends Fragment {
                 }
             }else {
                 u.setText("UNKNOWN");
-                //String value = savedInstanceState.getString("state");
-                //System.out.println(value);
             }
             u.setHeight(40);
         }
-        // Метод для доставания объекта Droid из аргументов фрагмента
 }

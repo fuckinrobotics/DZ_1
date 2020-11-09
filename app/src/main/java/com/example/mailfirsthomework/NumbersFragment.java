@@ -25,7 +25,7 @@ public class NumbersFragment extends Fragment {
 
     // Интерфейс клика по Numbers
     public interface IListener {
-        public void onNumbersClicked(Numbers item);
+        void onNumbersClicked(Numbers item);
     }
 
     // Переменная лисенера
@@ -78,6 +78,8 @@ public class NumbersFragment extends Fragment {
         mListener = null;
     }
 
+
+
     // Одна из возможных реализаций отслеживания клика по элементу
     // обработчик клика по элементу
     class NumbersClickHandler implements NumbersViewHolder.IListener {
@@ -94,6 +96,7 @@ public class NumbersFragment extends Fragment {
             newFragment.setArguments(bundle);
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.first_fragment, newFragment);
+            transaction.addToBackStack(null);
             transaction.commit();
         }
     }

@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     >
-    <fragment android:name="com.example.mailfirsthomework.NumbersFragment"
+    <FrameLayout android:name="com.example.mailfirsthomework.NumbersFragment"
         android:id="@+id/first_fragment"
-        android:layout_width="500dp"
-        android:layout_height="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
     <fragment android:name="com.example.mailfirsthomework.DetailsFragment"
         android:id="@+id/second_fragment"
-        android:layout_width="120dp"
+        android:layout_width="220dp"
         android:layout_height="match_parent"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
 

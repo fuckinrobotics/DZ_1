@@ -40,10 +40,12 @@ public class NumbersFragment extends Fragment {
         }
     }
 
+
     // Инициализация view
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.recycler_first_fragment, container             // родитель, куда потом будет вставлена верстка
                 , false     // стоит false, что бы инфлейтер вернул верстку.
                 // Если поставить true, то инфлейтер вставит верстку в parent, и вернет тоже parent
@@ -86,8 +88,6 @@ public class NumbersFragment extends Fragment {
             if (mListener != null) {
                 mListener.onNumbersClicked(item);
             }
-            System.out.println("hfgdf");
-
             Bundle bundle=new Bundle();
             bundle.putString("state",item.name);
             DetailsFragment newFragment = new DetailsFragment();

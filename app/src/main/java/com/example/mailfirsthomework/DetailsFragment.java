@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,19 +25,35 @@ public class DetailsFragment  extends Fragment {
         }
 
         @Override
-        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            TextView u = (TextView) view.findViewById(R.id.detail_txt);
-            if (savedInstanceState != null){
-                String value = savedInstanceState.getString("state");
+            final TextView u = (TextView) view.findViewById(R.id.detail_txt);
+            Button b = view.findViewById(R.id.btn_back);
+            final Bundle bundle = this.getArguments();
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (bundle != null) {
+                        NumbersFragment newFragment = new NumbersFragment();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.first_fragment, newFragment);
+                        transaction.commit();
+                    }
+                }
+            });
+            if (bundle != null){
+                String value = bundle.getString("state");
                 u.setText(value);
                 if (Integer.parseInt(value) % 2 == 0){
                     u.setTextColor(Color.parseColor("#FF0000"));
                 }else{
                     u.setTextColor(Color.parseColor("#0000FF"));
                 }
-            }else
-            u.setText("UNKNOWN");
+            }else {
+                u.setText("UNKNOWN");
+                //String value = savedInstanceState.getString("state");
+                //System.out.println(value);
+            }
             u.setHeight(40);
         }
         // Метод для доставания объекта Droid из аргументов фрагмента

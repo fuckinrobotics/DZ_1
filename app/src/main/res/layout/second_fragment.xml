@@ -6,8 +6,16 @@
     <TextView android:id="@+id/detail_txt"
         tools:text="Default name"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textSize="36dp"
         android:textColor="@color/color_black"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" />
+    <Button
+        android:layout_centerInParent="true"
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="back"/>
 </RelativeLayout>
